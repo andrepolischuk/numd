@@ -5,107 +5,111 @@
 
   'use strict';
 
-  var Numd = function() {
+  /**
+   * Store for values
+   */
 
-    /**
-     * Store for values
-     */
+  var store  = {};
 
-    var store  = {};
+  /**
+   * Get value
+   * @param  {String} word
+   * @return {Function}
+   * @api private
+   */
 
-    /**
-     * Get value
-     * @param  {Number} num
-     * @param  {String} word
-     * @return {String}
-     * @api public
-     */
-    
-    this.get = function(num, word) {
+  var get = function(word) {
 
-      num = parseInt(num);
+    if (store[word] !== undefined && store[word].length === 3) {
 
-      if (num && store[word] !== undefined && store[word].length == 3) {
+      return function(num) {
 
-        var value = decline(num, store[word]);
-        return num + ' ' + value;
+        num = parseInt(num);
 
-      } else {
+        if (num) {
+          
+          var value = decline(num, store[word]);
+          return num + ' ' + value;
 
-        return;
-
-      }
-
-    };
-
-    /**
-     * Set values
-     * @param {String|Object} word
-     * @param {Array} value
-     * @api public
-     */
-    
-    this.set = function(word, value) {
-
-      if (word === undefined) {
-
-        // word not defined
-
-      } else if (value === undefined) {
-
-        // words array
-        for (item in word) {
-          store[item] = word[item];
         }
 
-      } else {
+      };
 
-        // one word
-        store[word] = value;
-      }
+    }
 
-    };
+  };
 
-    /**
-     * Decline value
-     * @param  {Number} num
-     * @param  {String} word
-     * @return {String}
-     * @api private
-     */
-    
-    var decline = function(num, word) {
+  /**
+   * Decline value
+   * @param  {Number} num
+   * @param  {String} word
+   * @return {String}
+   * @api private
+   */
+  
+  var decline = function(num, word) {
 
-      if (num > 10 && ((num % 100) - ((num % 100) % 10)) / 10 == 1) {
+    if (num > 10 && ((num % 100) - ((num % 100) % 10)) / 10 === 1) {
 
+      // genitive plural
+      return word[2];
+
+    } else {
+
+      var nn = num % 10;
+
+      switch (nn) {
+        // nominative
+        case 1:
+          return word[0];
+        // genitive singular
+        case 2:
+        case 3:
+        case 4:
+          return word[1];
         // genitive plural
-        return word[2];
-
-      } else {
-
-        var nn = num % 10;
-
-        switch (nn) {
-          // nominative
-          case 1: return word[0]
-          break
-          // genitive singular
-          case 2:
-          case 3:
-          case 4: return word[1]
-          break
-          // genitive plural
-          case 5:
-          case 6:
-          case 7:
-          case 8:
-          case 9:
-          case 0: return word[2]
-          break
-        }
+        case 5:
+        case 6:
+        case 7:
+        case 8:
+        case 9:
+        case 0:
+          return word[2];
       }
 
-    };
+    }
+
+  };
+
+  /**
+   * Numd
+   * @param {Number|String|Object} word
+   * @param {String|Object} value
+   * @api public
+   */
+  
+  var numd = function(word, value) {
+
+    if (typeof word === 'object') {
+
+      // set words array
+      for (var item in word) {
+        store[item]   = word[item];
+        numd[item] = get(item);
+      }
+
+    } else if (typeof value === 'object') {
+
+      // set one word
+      store[word]   = value;
+      numd[word] = get(word);
+
+    } else if (typeof parseInt(word) === 'number' && typeof value === 'string') {
+
+      // get value
+      return get(value)(word);
+
+    }
 
   };
 
@@ -113,6 +117,6 @@
    * Module exports
    */
 
-  window.numd = new Numd();
+  window.numd = numd;
 
 }();
