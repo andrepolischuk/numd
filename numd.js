@@ -13,29 +13,30 @@
 
   /**
    * Get value
-   * @param  {String} word
+   * @param  {String} abbr
    * @return {Function}
    * @api private
    */
 
-  var get = function(word) {
+  var get = function(abbr) {
 
-    if (store[word] !== undefined && store[word].length === 3) {
-
-      return function(num) {
-
-        num = parseInt(num);
-
-        if (num) {
-          
-          var value = decline(num, store[word]);
-          return num + ' ' + value;
-
-        }
-
-      };
-
+    if (typeof abbr === 'string' && !store[abbr]) {
+      return;
     }
+    
+    var word = typeof abbr === 'object' ? abbr : store[abbr];
+
+    return function(num) {
+
+      num = +num;
+
+      if (!num) {
+        return;
+      }
+
+      return [num, decline(num, word)].join(' ');
+
+    };
 
   };
 
@@ -83,31 +84,40 @@
 
   /**
    * Numd
-   * @param {Number|String|Object} word
-   * @param {String|Object} value
+   * @param {Number|String|Object} num
+   * @param {String} nominative
+   * @param {String} genitiveSingular
+   * @param {String} genitivePlural
    * @api public
    */
   
-  function numd(word, value) {
+  function numd(num, nominative, genitiveSingular, genitivePlural) {
 
-    if (typeof word === 'object') {
+    if (typeof num === 'object') {
 
       // set words array
-      for (var item in word) {
-        store[item] = word[item];
-        numd[item]  = get(item);
+      for (var item in num) {
+        if (num[item].length === 3) {
+          store[item] = num[item];
+          numd[item]  = get(item);
+        }
       }
 
-    } else if (typeof value === 'object') {
+    } else if (typeof num === 'string' && !!genitivePlural) {
 
       // set one word
-      store[word] = value;
-      numd[word]  = get(word);
+      store[num] = [nominative, genitiveSingular, genitivePlural];
+      numd[num]  = get(num);
 
-    } else if (typeof parseInt(word) === 'number' && typeof value === 'string') {
+    } else if (typeof +num === 'number' && !!genitivePlural) {
 
-      // get value
-      return get(value)(word);
+      // guick get value
+      return get([nominative, genitiveSingular, genitivePlural])(num);
+
+    } else if (typeof +num === 'number' && !genitiveSingular) {
+
+      // get value from storage
+      return get(nominative)(num);
 
     }
 
