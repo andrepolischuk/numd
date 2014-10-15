@@ -88,21 +88,21 @@
    * @api public
    */
   
-  var numd = function(word, value) {
+  function numd(word, value) {
 
     if (typeof word === 'object') {
 
       // set words array
       for (var item in word) {
-        store[item]   = word[item];
-        numd[item] = get(item);
+        store[item] = word[item];
+        numd[item]  = get(item);
       }
 
     } else if (typeof value === 'object') {
 
       // set one word
-      store[word]   = value;
-      numd[word] = get(word);
+      store[word] = value;
+      numd[word]  = get(word);
 
     } else if (typeof parseInt(word) === 'number' && typeof value === 'string') {
 
@@ -111,7 +111,7 @@
 
     }
 
-  };
+  }
 
   /**
    * Module exports
