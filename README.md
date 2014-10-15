@@ -1,44 +1,71 @@
 # Numd
 
-  Declination numerals
+  Declination russian numerals
+
+  * 1 рубль
+  * 2 рубля
+  * 5 рублей
 
 ## Instalation
 
-  Via script tag in page sources:
+  In browser:
 
 ```html
 <script src="/static/js/numd.min.js"></script>
 ```
 
-## API
+  In node.js
 
-### numd.set(name, values)
-  
-  Add one value
-
-```js
-numd.set('rub', ['рубль', 'рубля', 'рублей']);
+```sh
+npm install numd
 ```
 
-### numd.set(values)
+```js
+var numd = require('numd');
+```
+
+
+## API
+
+### numd(values)
   
-  Add value object
+  Add some values
 
 ```js
-numd.set({
+numd({
   'usd': ['доллар', 'доллара', 'долларов'],
   'gbp': ['фунт', 'фунта', 'фунтов']
 });
 ```
 
-### numd.get(num, word)
+### numd(name, nominative, genitiveSingular, genitivePlural)
+  
+  Add one value
+
+```js
+numd('rub', 'рубль', 'рубля', 'рублей');
+```
+
+### numd.word(num) or numd(num, name)
 
   Get saved value by number
 
-* `num` - number
-* `word` - declination variant id (например, 'usd')
+  * `num` - number
+  * `name` - declination variant name (example, 'usd')
 
 ```js
-numd.get(2, 'rub');
+numd.rub(2);
 // 2 рубля
+
+numd(5, 'rub');
+// 5 рублей
+```
+
+### numd(num, nominative, genitiveSingular, genitivePlural)
+
+  Get not saved value
+
+```js
+numd(14, 'рубль', 'рубля', 'рублей');
+// 14 рублей
 ```
