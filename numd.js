@@ -126,7 +126,21 @@
   /**
    * Module exports
    */
+  
+  if (typeof define === 'function' && define.amd) {
+ 
+    define([], function() {
+      return numd;
+    });
+ 
+  } else if (typeof module !== 'undefined' && module.exports) {
+ 
+    module.exports = numd;
+ 
+  } else {
+ 
+    this.numd = numd;
+ 
+  }
 
-  window.numd = numd;
-
-}();
+}.call(this);
