@@ -28,9 +28,7 @@
 
     return function(num) {
 
-      num = +num;
-
-      if (!num) {
+      if (num === undefined) {
         return;
       }
 
@@ -50,6 +48,19 @@
 
   var decline = function(num, word) {
 
+    num = Math.abs(+num);
+
+    // null
+    if (num === 0) {
+      return word[2];
+    }
+
+    // fractional
+    if (Math.floor(num) !== num) {
+      return word[1];
+    }
+
+    // integer
     if (num > 10 && ((num % 100) - ((num % 100) % 10)) / 10 === 1) {
 
       // genitive plural
