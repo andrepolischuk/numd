@@ -23,7 +23,7 @@
     if (typeof abbr === 'string' && !store[abbr]) {
       return;
     }
-    
+
     var word = typeof abbr === 'object' ? abbr : store[abbr];
 
     return function(num) {
@@ -47,7 +47,7 @@
    * @return {String}
    * @api private
    */
-  
+
   var decline = function(num, word) {
 
     if (num > 10 && ((num % 100) - ((num % 100) % 10)) / 10 === 1) {
@@ -90,7 +90,7 @@
    * @param {String} genitivePlural
    * @api public
    */
-  
+
   function numd(num, nominative, genitiveSingular, genitivePlural) {
 
     if (typeof num === 'object') {
@@ -126,21 +126,21 @@
   /**
    * Module exports
    */
-  
+
   if (typeof define === 'function' && define.amd) {
- 
+
     define([], function() {
       return numd;
     });
- 
+
   } else if (typeof module !== 'undefined' && module.exports) {
- 
+
     module.exports = numd;
- 
+
   } else {
- 
+
     this.numd = numd;
- 
+
   }
 
 }.call(this);
