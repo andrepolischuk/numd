@@ -50,11 +50,6 @@
 
     num = Math.abs(+num);
 
-    // null
-    if (num === 0) {
-      return word[2];
-    }
-
     // fractional
     if (Math.floor(num) !== num) {
       return word[1];
@@ -62,33 +57,10 @@
 
     // integer
     if (num > 10 && ((num % 100) - ((num % 100) % 10)) / 10 === 1) {
-
-      // genitive plural
       return word[2];
-
     } else {
-
       var nn = num % 10;
-
-      switch (nn) {
-        // nominative
-        case 1:
-          return word[0];
-        // genitive singular
-        case 2:
-        case 3:
-        case 4:
-          return word[1];
-        // genitive plural
-        case 5:
-        case 6:
-        case 7:
-        case 8:
-        case 9:
-        case 0:
-          return word[2];
-      }
-
+      return word[(nn === 0 || nn >= 5) ? 2 : (nn >= 2 ? 1 : 0)];
     }
 
   };
