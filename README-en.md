@@ -1,20 +1,20 @@
 # Numd
 
-  Склонение слов после числительных
+  Declination russian numerals
 
   * 1 рубль
   * 2 рубля
   * 5 рублей
 
-## Установка
+## Instalation
 
-  В браузере:
+  In browser:
 
 ```html
 <script src="/static/js/numd.min.js"></script>
 ```
 
-  В node.js:
+  In node.js
 
 ```sh
 npm install numd
@@ -24,11 +24,12 @@ npm install numd
 var numd = require('numd');
 ```
 
+
 ## API
 
 ### numd(values)
-
-  Добавление массива значений
+  
+  Add some values
 
 ```js
 numd({
@@ -38,19 +39,19 @@ numd({
 ```
 
 ### numd(name, nominative, genitiveSingular, genitivePlural)
-
-  Добавление одного значения
+  
+  Add one value
 
 ```js
 numd('rub', 'рубль', 'рубля', 'рублей');
 ```
 
-### numd.word(num) или numd(num, name)
+### numd.word(num) or numd(num, name)
 
-  Получаем слово в нужном склонении
+  Get saved value by number
 
-  * `num` - число
-  * `name` - индекс склоняемой комбинации (например, 'usd')
+  * `num` - number
+  * `name` - declination variant name (example, 'usd')
 
 ```js
 numd.rub(2);
@@ -62,7 +63,7 @@ numd(5, 'rub');
 
 ### numd(num, nominative, genitiveSingular, genitivePlural)
 
-  Получаем слово в нужном склонении без предварительного сохранения комбинации
+  Get not saved value
 
 ```js
 numd(14, 'рубль', 'рубля', 'рублей');
