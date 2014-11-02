@@ -32,7 +32,7 @@
         return;
       }
 
-      return [num, decline(num, word)].join(' ');
+      return [+num, decline(+num, word)].join(' ');
 
     };
 
@@ -48,7 +48,7 @@
 
   var decline = function(num, word) {
 
-    num = Math.abs(+num);
+    num = Math.abs(num);
 
     // fractional
     if (Math.floor(num) !== num) {
