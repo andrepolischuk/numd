@@ -11,7 +11,7 @@
   В браузере:
 
 ```html
-<script src="/static/js/numd.min.js"></script>
+<script src="//cdn.rawgit.com/andrepolischuk/numd/1.0.3/numd.min.js"></script>
 ```
 
   В node.js:
