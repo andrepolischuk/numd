@@ -1,0 +1,21 @@
+{
+  "name": "numd",
+  "description": "Declination russian numerals",
+  "version": "1.0.3",
+  "keywords": [
+    "num",
+    "number",
+    "numbers",
+    "numeral",
+    "numerals",
+    "decline",
+    "russian",
+    "ru"
+  ],
+  "repository": "andrepolischuk/numd",
+  "main" : "numd.js",
+  "scripts" : [
+    "numd.js"
+  ],
+  "license": "MIT"
+}
