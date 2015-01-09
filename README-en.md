@@ -11,7 +11,7 @@
   Browser:
 
 ```html
-<script src="https://cdn.rawgit.com/andrepolischuk/numd/1.0.3/numd.min.js"></script>
+<script src="https://cdn.rawgit.com/andrepolischuk/numd/1.1.0/numd.min.js"></script>
 ```
 
   Component(1):
@@ -29,7 +29,6 @@ $ npm install numd
 ```js
 var numd = require('numd');
 ```
-
 
 ## API
 

@@ -1,3 +1,8 @@
+# 1.1.0 / 2015.01.09
+
+  * Add component support #3
+  * Fix package.json
+
 # 1.0.3 / 2014.11.02
 
   * Fix #2 convert empty num to 0
