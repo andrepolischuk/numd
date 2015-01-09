@@ -1,7 +1,7 @@
 // Numd © 2013-2015 Andrey Polischuk
 // github.com/andrepolischuk/numd
 
-!function(undefined) {
+!function() {
 
   'use strict';
 
@@ -18,7 +18,7 @@
    * @api private
    */
 
-  var get = function(abbr) {
+  function get(abbr) {
 
     if (typeof abbr === 'string' && !store[abbr]) {
       return;
@@ -36,7 +36,7 @@
 
     };
 
-  };
+  }
 
   /**
    * Decline value
@@ -46,7 +46,7 @@
    * @api private
    */
 
-  var decline = function(num, word) {
+  function decline(num, word) {
 
     num = Math.abs(num);
 
@@ -63,7 +63,7 @@
       return word[(nn === 0 || nn >= 5) ? 2 : (nn >= 2 ? 1 : 0)];
     }
 
-  };
+  }
 
   /**
    * Numd
