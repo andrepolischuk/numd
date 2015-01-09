@@ -1,5 +1,5 @@
-// Numd © 2013-2014 Andrey Polischuk
-// https://github.com/andrepolischuk/numd
+// Numd © 2013-2015 Andrey Polischuk
+// github.com/andrepolischuk/numd
 
 !function(undefined) {
 
