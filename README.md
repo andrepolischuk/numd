@@ -8,16 +8,22 @@
 
 ## Установка
 
-  В браузере:
+  Браузер:
 
 ```html
-<script src="//cdn.rawgit.com/andrepolischuk/numd/1.0.3/numd.min.js"></script>
+<script src="https://cdn.rawgit.com/andrepolischuk/numd/1.0.3/numd.min.js"></script>
 ```
 
-  В node.js:
+  Component(1):
 
 ```sh
-npm install numd
+$ component install andrepolischuk/numd
+```
+
+  Npm:
+
+```sh
+$ npm install numd
 ```
 
 ```js
