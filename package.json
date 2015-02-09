@@ -16,6 +16,13 @@
     "type": "git",
     "url": "git://github.com/andrepolischuk/numd.git"
   },
+  "devDependencies": {
+    "chai": "^1.10.0",
+    "mocha": "^2.0.1"
+  },
+  "scripts": {
+    "test": "mocha test/test.js"
+  },
   "main": "numd.js",
   "author": "Andrey Polischuk <andre.polischuk@gmail.com>",
   "license": "MIT"
