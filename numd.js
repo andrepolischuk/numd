@@ -92,15 +92,12 @@
       store[num] = [nominative, genitiveSingular, genitivePlural];
       numd[num]  = get(num);
 
-    } else if (typeof +num === 'number' && !!genitivePlural) {
+    } else if (typeof +num === 'number' && nominative) {
 
-      // guick get value
-      return get([nominative, genitiveSingular, genitivePlural])(num);
-
-    } else if (typeof +num === 'number' && !genitiveSingular) {
-
-      // get value from storage
-      return get(nominative)(num);
+      // guick get value or from storage
+      return genitiveSingular && genitivePlural ?
+        get([nominative, genitiveSingular, genitivePlural])(num) :
+        get(nominative)(num);
 
     }
 
