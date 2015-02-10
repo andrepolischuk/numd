@@ -19,7 +19,7 @@ describe('numd', function() {
       (numd(0) === undefined).should.be.true;
       (numd(null, 'rur') === undefined).should.be.true;
       (numd.usd() === undefined).should.be.true;
-      (numd.gbp('abc') === undefined).should.be.true;
+      (numd.rur('abc') === undefined).should.be.true;
       (numd(22, 'марка') === undefined).should.be.true;
     });
 
