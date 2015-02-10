@@ -28,7 +28,7 @@
 
     return function(num) {
 
-      if (num === undefined) {
+      if (isNaN(parseInt(num))) {
         return;
       }
 
@@ -92,12 +92,15 @@
       store[num] = [nominative, genitiveSingular, genitivePlural];
       numd[num]  = get(num);
 
-    } else if (typeof +num === 'number' && nominative) {
+    } else if (arguments.length === 4) {
 
-      // guick get value or from storage
-      return genitiveSingular && genitivePlural ?
-        get([nominative, genitiveSingular, genitivePlural])(num) :
-        get(nominative)(num);
+      // guick get value
+      return get([nominative, genitiveSingular, genitivePlural])(num);
+
+    } else if (nominative && store[nominative]) {
+
+      // get from storage
+      return get(nominative)(num);
 
     }
 
