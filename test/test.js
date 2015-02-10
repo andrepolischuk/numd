@@ -1,13 +1,13 @@
 var numd = require('../');
-var assert = require('chai').assert;
+var should = require('should');
 
 describe('numd', function() {
 
-  describe('set values', function() {
+  describe('set value', function() {
 
     it('should return undefined', function() {
-      assert.isUndefined(numd('rur', 'рубль', 'рубля', 'рублей'));
-      assert.isUndefined(numd({ 'usd': ['доллар', 'доллара', 'долларов'] }));
+      (numd('rur', 'рубль', 'рубля', 'рублей') === undefined).should.be.true;
+      (numd({ 'usd': ['доллар', 'доллара', 'долларов'] }) === undefined).should.be.true;
     });
 
   });
@@ -15,40 +15,40 @@ describe('numd', function() {
   describe('get value', function() {
 
     it('should return undefined', function() {
-      assert.isUndefined(numd());
-      assert.isUndefined(numd(0));
-      assert.isUndefined(numd(null, 'rur'));
-      assert.isUndefined(numd.usd());
-      assert.isUndefined(numd.gbp('abc'));
-      assert.isUndefined(numd(22, 'марка'));
+      (numd() === undefined).should.be.true;
+      (numd(0) === undefined).should.be.true;
+      (numd(null, 'rur') === undefined).should.be.true;
+      (numd.usd() === undefined).should.be.true;
+      (numd.gbp('abc') === undefined).should.be.true;
+      (numd(22, 'марка') === undefined).should.be.true;
     });
 
     it('should return string', function() {
-      assert.isString(numd(1, 'rur'));
-      assert.isString(numd.usd(4));
-      assert.isString(numd(7, 'франк', 'франка', 'франков'));
-      assert.isString(numd(150.2, 'метр', 'метра', 'метров'));
-      assert.isString(numd(-4, 'градус', 'градуса', 'градусов'));
+      numd(1, 'rur').should.be.a.String;
+      numd.usd(4).should.be.a.String;
+      numd(7, 'франк', 'франка', 'франков').should.be.a.String;
+      numd(150.2, 'метр', 'метра', 'метров').should.be.a.String;
+      numd(-4, 'градус', 'градуса', 'градусов').should.be.a.String;
     });
 
     it('should return `1 рубль`', function() {
-      assert.equal('1 рубль', numd(1, 'rur'));
+      numd(1, 'rur').should.equal('1 рубль');
     });
 
     it('should return `4 доллара`', function() {
-      assert.equal('4 доллара', numd.usd(4));
+      numd.usd(4).should.equal('4 доллара');
     });
 
     it('should return `7 франков`', function() {
-      assert.equal('7 франков', numd(7, 'франк', 'франка', 'франков'));
+      numd(7, 'франк', 'франка', 'франков').should.equal('7 франков');
     });
 
     it('should return `150.2 метра`', function() {
-      assert.equal('150.2 метра', numd(150.2, 'метр', 'метра', 'метров'));
+      numd(150.2, 'метр', 'метра', 'метров').should.equal('150.2 метра');
     });
 
     it('should return `-4 градуса`', function() {
-      assert.equal('-4 градуса', numd(-4, 'градус', 'градуса', 'градусов'));
+      numd(-4, 'градус', 'градуса', 'градусов').should.equal('-4 градуса');
     });
 
   });

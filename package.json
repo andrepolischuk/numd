@@ -17,8 +17,8 @@
     "url": "git://github.com/andrepolischuk/numd.git"
   },
   "devDependencies": {
-    "chai": "^1.10.0",
-    "mocha": "^2.0.1"
+    "mocha": "^2.0.1",
+    "should": "^4.6.5"
   },
   "scripts": {
     "test": "mocha test/test.js"
