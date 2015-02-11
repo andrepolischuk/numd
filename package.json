@@ -23,7 +23,7 @@
   "scripts": {
     "test": "mocha test/test.js"
   },
-  "main": "numd.js",
+  "main": "index.js",
   "author": "Andrey Polischuk <andre.polischuk@gmail.com>",
   "license": "MIT"
 }

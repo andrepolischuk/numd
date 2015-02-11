@@ -13,9 +13,9 @@
     "ru"
   ],
   "repository": "andrepolischuk/numd",
-  "main" : "numd.js",
+  "main" : "index.js",
   "scripts" : [
-    "numd.js"
+    "index.js"
   ],
   "license": "MIT"
 }
