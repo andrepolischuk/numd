@@ -11,7 +11,7 @@
   Браузер:
 
 ```html
-<script src="https://cdn.rawgit.com/andrepolischuk/numd/1.1.0/numd.min.js"></script>
+<script src="https://cdn.rawgit.com/andrepolischuk/numd/1.1.2/dist/numd.min.js"></script>
 ```
 
   Component(1):

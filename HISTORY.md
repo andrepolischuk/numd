@@ -1,3 +1,9 @@
+# 1.1.2 / 2015.02.11
+
+  * Add mocha test
+  * Fix incorrect args
+  * Rename numd.js to index.js and remove incapsulation
+
 # 1.1.0 / 2015.01.09
 
   * Add component support #3
