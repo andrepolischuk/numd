@@ -1,56 +1,23 @@
-var numd = require('../');
-var should = require('should');
+var numd = require('..');
+var assert = require('assert');
 
-describe('numd', function() {
+describe('numd(num, ...words)', function() {
 
-  describe('set value', function() {
-
-    it('should return undefined', function() {
-      (numd('rur', 'рубль', 'рубля', 'рублей') === undefined).should.be.true;
-      (numd({ 'usd': ['доллар', 'доллара', 'долларов'] }) === undefined).should.be.true;
-    });
-
+  it('should return string', function() {
+    assert(numd(1, 'рубль', 'рубля', 'рублей') === '1 рубль');
+    assert(numd(4, 'доллар', 'доллара', 'долларов') === '4 доллара');
+    assert(numd(7, 'франк', 'франка', 'франков') === '7 франков');
+    assert(numd(150.2, 'метр', 'метра', 'метров') === '150.2 метра');
+    assert(numd(-4, 'градус', 'градуса', 'градусов') === '-4 градуса');
   });
 
-  describe('get value', function() {
+});
 
-    it('should return undefined', function() {
-      (numd() === undefined).should.be.true;
-      (numd(0) === undefined).should.be.true;
-      (numd(null, 'rur') === undefined).should.be.true;
-      (numd.usd() === undefined).should.be.true;
-      (numd.rur('abc') === undefined).should.be.true;
-      (numd(22, 'марка') === undefined).should.be.true;
-    });
+describe('numd(...words)', function() {
 
-    it('should return string', function() {
-      numd(1, 'rur').should.be.a.String;
-      numd.usd(4).should.be.a.String;
-      numd(7, 'франк', 'франка', 'франков').should.be.a.String;
-      numd(150.2, 'метр', 'метра', 'метров').should.be.a.String;
-      numd(-4, 'градус', 'градуса', 'градусов').should.be.a.String;
-    });
-
-    it('should return `1 рубль`', function() {
-      numd(1, 'rur').should.equal('1 рубль');
-    });
-
-    it('should return `4 доллара`', function() {
-      numd.usd(4).should.equal('4 доллара');
-    });
-
-    it('should return `7 франков`', function() {
-      numd(7, 'франк', 'франка', 'франков').should.equal('7 франков');
-    });
-
-    it('should return `150.2 метра`', function() {
-      numd(150.2, 'метр', 'метра', 'метров').should.equal('150.2 метра');
-    });
-
-    it('should return `-4 градуса`', function() {
-      numd(-4, 'градус', 'градуса', 'градусов').should.equal('-4 градуса');
-    });
-
+  it('should return function', function() {
+    assert(typeof numd('рубль', 'рубля', 'рублей') === 'function');
+    assert(typeof numd('доллар', 'доллара', 'долларов') === 'function');
   });
 
 });

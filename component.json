@@ -3,14 +3,10 @@
   "description": "Declination russian numerals",
   "version": "1.1.2",
   "keywords": [
-    "num",
     "number",
-    "numbers",
     "numeral",
-    "numerals",
     "decline",
-    "russian",
-    "ru"
+    "russian"
   ],
   "repository": "andrepolischuk/numd",
   "main" : "index.js",
