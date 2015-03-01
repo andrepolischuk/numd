@@ -1,6 +1,18 @@
 var numd = require('..');
 var assert = require('assert');
 
+describe('numd()', function() {
+
+  it('should return undefined', function() {
+    assert(numd() === undefined);
+    assert(numd(0) === undefined);
+    assert(numd('рубль') === undefined);
+    assert(numd(2, 'доллар', 'доллара') === undefined);
+    assert(numd(null, 'метр', 'метра', 'метров') === undefined);
+  });
+
+});
+
 describe('numd(num, ...words)', function() {
 
   it('should return string', function() {
@@ -18,6 +30,14 @@ describe('numd(...words)', function() {
   it('should return function', function() {
     assert(typeof numd('рубль', 'рубля', 'рублей') === 'function');
     assert(typeof numd('доллар', 'доллара', 'долларов') === 'function');
+    var deg = numd(-4, 'градус', 'градуса', 'градусов');
+  });
+
+  it('should return string', function() {
+    var rur = numd('рубль', 'рубля', 'рублей');
+    var deg = numd('градус', 'градуса', 'градусов');
+    assert(rur(1) === '1 рубль');
+    assert(deg(-4) === '-4 градуса');
   });
 
 });

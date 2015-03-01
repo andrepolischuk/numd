@@ -14,7 +14,8 @@
 module.exports = function(num) {
   switch (typeof num) {
     case 'number':
-      return decline([].slice.call(arguments, 1))(num);
+      var fn = decline([].slice.call(arguments, 1));
+      return fn ? fn(num) : fn;
     case 'string':
       return decline(arguments);
   }
