@@ -95,111 +95,83 @@
 'use strict';
 
 /**
- * Store for values
+ * Expose decline
+ * @param  {Number|String} num
+ * @param  {String} nominative
+ * @param  {String} genitiveSingular
+ * @param  {String} genitivePlural
+ * @return {String|Function}
+ * @api public
  */
 
-var store  = {};
+module.exports = function(num) {
+  switch (typeof num) {
+    case 'number':
+      var fn = decline([].slice.call(arguments, 1));
+      return fn ? fn(num) : fn;
+    case 'string':
+      return decline(arguments);
+  }
+};
 
 /**
- * Get value
- * @param  {String} abbr
+ * Decline value
+ * @param  {String} words
  * @return {Function}
  * @api private
  */
 
-function get(abbr) {
+function decline(words) {
 
-  if (typeof abbr === 'string' && !store[abbr]) {
+  if (words.length !== 3) {
     return;
   }
 
-  var word = typeof abbr === 'object' ? abbr : store[abbr];
-
   return function(num) {
 
-    if (isNaN(parseInt(num))) {
+    if (isNaN(num)) {
       return;
     }
 
-    return [+num, decline(+num, word)].join(' ');
+    var res = num + ' ';
+    num = Math.abs(num);
+
+    switch (true) {
+      case isGenitivePlural(num):
+        return res + words[2];
+      case isGenitiveSingular(num):
+        return res + words[1];
+      default:
+        return res + words[0];
+    }
 
   };
 
 }
 
 /**
- * Decline value
- * @param  {Number} num
- * @param  {String} word
- * @return {String}
+ * Genetive plural test
+ * @param  {Number}  num
+ * @return {Boolean}
  * @api private
  */
 
-function decline(num, word) {
-
-  num = Math.abs(num);
-
-  // fractional
-  if (Math.floor(num) !== num) {
-    return word[1];
-  }
-
-  // integer
-  if (num > 10 && ((num % 100) - ((num % 100) % 10)) / 10 === 1) {
-    return word[2];
-  } else {
-    var nn = num % 10;
-    return word[(nn === 0 || nn >= 5) ? 2 : (nn >= 2 ? 1 : 0)];
-  }
-
+function isGenitivePlural(num) {
+  var nn = num % 10;
+  return (num > 10 && ((num % 100) - ((num % 100) % 10)) / 10 === 1) ||
+    nn === 0 || nn >= 5;
 }
 
 /**
- * Numd
- * @param {Number|String|Object} num
- * @param {String} nominative
- * @param {String} genitiveSingular
- * @param {String} genitivePlural
- * @api public
+ * Genetive singular test
+ * @param  {Number}  num
+ * @return {Boolean}
+ * @api private
  */
 
-function numd(num, nominative, genitiveSingular, genitivePlural) {
-
-  if (typeof num === 'object') {
-
-    // set words array
-    for (var item in num) {
-      if (num[item].length === 3) {
-        store[item] = num[item];
-        numd[item]  = get(item);
-      }
-    }
-
-  } else if (typeof num === 'string' && !!genitivePlural) {
-
-    // set one word
-    store[num] = [nominative, genitiveSingular, genitivePlural];
-    numd[num]  = get(num);
-
-  } else if (arguments.length === 4) {
-
-    // guick get value
-    return get([nominative, genitiveSingular, genitivePlural])(num);
-
-  } else if (nominative && store[nominative]) {
-
-    // get from storage
-    return get(nominative)(num);
-
-  }
-
+function isGenitiveSingular(num) {
+  return Math.floor(num) !== num || num % 10 >= 2;
 }
-
-/**
- * Module exports
- */
-
-module.exports = numd;
 
 }, {}]}, {}, {"1":""})
 );

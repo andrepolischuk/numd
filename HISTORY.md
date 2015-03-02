@@ -1,3 +1,10 @@
+# 2.0.0 / 2015.03.02
+
+  * Simplify component
+  * Remove store values
+  * Fix undefined function
+  * Update test
+
 # 1.1.2 / 2015.02.11
 
   * Add mocha test
