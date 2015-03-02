@@ -1,3 +1,4 @@
+
 var numd = require('..');
 var assert = require('assert');
 
@@ -30,7 +31,6 @@ describe('numd(...words)', function() {
   it('should return function', function() {
     assert(typeof numd('рубль', 'рубля', 'рублей') === 'function');
     assert(typeof numd('доллар', 'доллара', 'долларов') === 'function');
-    var deg = numd(-4, 'градус', 'градуса', 'градусов');
   });
 
   it('should return string', function() {

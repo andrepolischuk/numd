@@ -40,17 +40,17 @@ function decline(words) {
       return;
     }
 
-    var abs = Math.abs(num);
+    var res = num + ' ';
+    num = Math.abs(num);
 
-    if (isGenitivePlural(abs)) {
-      return [num, words[2]].join(' ');
+    switch (true) {
+      case isGenitivePlural(num):
+        return res + words[2];
+      case isGenitiveSingular(num):
+        return res + words[1];
+      default:
+        return res + words[0];
     }
-
-    if (isGenitiveSingular(abs)) {
-      return [num, words[1]].join(' ');
-    }
-
-    return [num, words[0]].join(' ');
 
   };
 
