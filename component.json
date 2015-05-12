@@ -1,7 +1,7 @@
 {
   "name": "numd",
   "description": "Declination russian numerals",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "keywords": [
     "number",
     "numeral",
@@ -9,8 +9,8 @@
     "russian"
   ],
   "repository": "andrepolischuk/numd",
-  "main" : "index.js",
-  "scripts" : [
+  "main": "index.js",
+  "scripts": [
     "index.js"
   ],
   "license": "MIT"
