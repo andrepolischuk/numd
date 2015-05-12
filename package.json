@@ -8,14 +8,14 @@
     "decline",
     "russian"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/andrepolischuk/numd.git"
-  },
+  "repository": "andrepolischuk/numd",
   "devDependencies": {
     "mocha": "^2.1.0"
   },
   "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
   "author": "Andrey Polischuk <andre.polischuk@gmail.com>",
   "license": "MIT"
 }
