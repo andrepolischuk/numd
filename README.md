@@ -1,6 +1,6 @@
-# Numd
+# numd [![Build Status](https://travis-ci.org/andrepolischuk/numd.svg?branch=master)](https://travis-ci.org/andrepolischuk/numd)
 
-  Склонение слов после числительных
+  > Склонение слов после числительных
 
   * 1 рубль
   * 2 рубля
@@ -8,22 +8,9 @@
 
 ## Установка
 
-  Браузер:
-
-```html
-<script src="https://cdn.rawgit.com/andrepolischuk/numd/2.0.0/numd.min.js"></script>
-```
-
-  Component(1):
-
 ```sh
+$ npm install --save numd
 $ component install andrepolischuk/numd
-```
-
-  Npm:
-
-```sh
-$ npm install numd
 ```
 
 ## API
@@ -33,8 +20,7 @@ $ npm install numd
   Получаем слово в нужном склонении
 
 ```js
-numd(14, 'рубль', 'рубля', 'рублей');
-// 14 рублей
+numd(14, 'рубль', 'рубля', 'рублей'); // 14 рублей
 ```
 
 ### numd(nominative, genitiveSingular, genitivePlural)
@@ -44,11 +30,8 @@ numd(14, 'рубль', 'рубля', 'рублей');
 ```js
 var rur = numd('рубль', 'рубля', 'рублей');
 
-rur(22);
-// 22 рубля
-
-rur(51);
-// 51 рубль
+rur(22); // 22 рубля
+rur(51); // 51 рубль
 ```
 
 ## License

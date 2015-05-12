@@ -3,6 +3,7 @@
 
 /**
  * Expose decline
+ *
  * @param  {Number|String} num
  * @param  {String} nominative
  * @param  {String} genitiveSingular
@@ -23,23 +24,17 @@ module.exports = function(num) {
 
 /**
  * Decline value
+ *
  * @param  {String} words
  * @return {Function}
  * @api private
  */
 
 function decline(words) {
-
-  if (words.length !== 3) {
-    return;
-  }
+  if (words.length !== 3) return;
 
   return function(num) {
-
-    if (isNaN(num)) {
-      return;
-    }
-
+    if (isNaN(num)) return;
     var res = num + ' ';
     num = Math.abs(num);
 
@@ -51,13 +46,12 @@ function decline(words) {
       default:
         return res + words[0];
     }
-
   };
-
 }
 
 /**
  * Genetive plural test
+ *
  * @param  {Number}  num
  * @return {Boolean}
  * @api private
