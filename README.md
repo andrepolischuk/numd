@@ -10,6 +10,9 @@
 
 ```sh
 $ npm install --save numd
+```
+
+```sh
 $ component install andrepolischuk/numd
 ```
 
