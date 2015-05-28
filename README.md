@@ -9,11 +9,11 @@
 ## Установка
 
 ```sh
-$ npm install --save numd
+npm install --save numd
 ```
 
 ```sh
-$ component install andrepolischuk/numd
+component install andrepolischuk/numd
 ```
 
 ## API
