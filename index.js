@@ -2,7 +2,7 @@
 'use strict';
 
 /**
- * Expose decline
+ * Expose pluralize
  *
  * @param  {Number|String} num
  * @param  {String} nominative
@@ -13,28 +13,20 @@
  */
 
 module.exports = function(num) {
-  switch (typeof num) {
-    case 'number':
-      var fn = decline([].slice.call(arguments, 1));
-      return fn ? fn(num) : fn;
-    case 'string':
-      return decline(arguments);
-  }
+  var fn = typeof num === 'number' ? pluralize([].slice.call(arguments, 1)) : null;
+  return fn ? fn(num) : pluralize(arguments);
 };
 
 /**
- * Decline value
+ * Pluralize value
  *
  * @param  {String} words
  * @return {Function}
  * @api private
  */
 
-function decline(words) {
-  if (words.length !== 3) return;
-
+function pluralize(words) {
   return function(num) {
-    if (isNaN(num)) return;
     var res = num + ' ';
     num = Math.abs(num);
 

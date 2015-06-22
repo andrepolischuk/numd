@@ -1,18 +1,8 @@
 
 'use strict';
 
-var numd = require('..');
+var numd = require('./');
 var assert = require('assert');
-
-describe('numd()', function() {
-  it('should return undefined', function() {
-    assert(numd() === undefined);
-    assert(numd(0) === undefined);
-    assert(numd('рубль') === undefined);
-    assert(numd(2, 'доллар', 'доллара') === undefined);
-    assert(numd(null, 'метр', 'метра', 'метров') === undefined);
-  });
-});
 
 describe('numd(num, ...words)', function() {
   it('should return string', function() {
