@@ -19,7 +19,7 @@ describe('numd(num, ...words)', function() {
 });
 
 describe('numd(...words)', function() {
-  it('should return string', function() {
+  it('should return function', function() {
     var rurRu = numd('рубль', 'рубля', 'рублей');
     assert(rurRu(1) === '1 рубль');
     var degRu = numd('градус', 'градуса', 'градусов');
