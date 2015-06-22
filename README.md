@@ -1,12 +1,11 @@
-# numd [![Build Status](https://travis-ci.org/andrepolischuk/numd.svg?branch=master)](https://travis-ci.org/andrepolischuk/numd)
+# numd [![Build Status][travis-image]][travis-url]
 
-  > Склонение слов после числительных
+  > Pluralize a word
 
-  * 1 рубль
-  * 2 рубля
-  * 5 рублей
+  * 1 dollar, 5 dollars
+  * 1 рубль, 2 рубля, 5 рублей
 
-## Установка
+## Install
 
 ```sh
 npm install --save numd
@@ -16,27 +15,41 @@ npm install --save numd
 component install andrepolischuk/numd
 ```
 
-## API
-
-### numd(num, nominative, genitiveSingular, genitivePlural)
-
-  Получаем слово в нужном склонении
+## Usage
 
 ```js
+var numd = require('numd');
+
+numd(2, 'dollar', 'dollars'); // 2 dollars
 numd(14, 'рубль', 'рубля', 'рублей'); // 14 рублей
 ```
 
-### numd(nominative, genitiveSingular, genitivePlural)
+## API
 
-  Получаем функцию склонения
+### numd(num, word[, singular], plural)
+
+  Return string
 
 ```js
+numd(1, 'dollar', 'dollars'); // 1 dollar
+numd(1, 'рубль', 'рубля', 'рублей'); // 1 рубль
+```
+
+### numd(word[, singular], plural)
+
+  Return function
+
+```js
+var usd = numd('dollar', 'dollars');
 var rur = numd('рубль', 'рубля', 'рублей');
 
-rur(22); // 22 рубля
+usd(22); // 22 dollars
 rur(51); // 51 рубль
 ```
 
 ## License
 
   MIT
+
+[travis-url]: https://travis-ci.org/andrepolischuk/numd
+[travis-image]: https://travis-ci.org/andrepolischuk/numd.svg?branch=master

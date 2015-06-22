@@ -1,12 +1,14 @@
 {
   "name": "numd",
-  "description": "Declination russian numerals",
+  "description": "Pluralize a word",
   "version": "2.1.0",
   "keywords": [
     "number",
     "numeral",
-    "decline",
-    "russian"
+    "word",
+    "singular",
+    "plural",
+    "pluralize"
   ],
   "repository": "andrepolischuk/numd",
   "devDependencies": {
