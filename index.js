@@ -33,6 +33,8 @@ function pluralize(word, singular, plural) {
     var abs = Math.abs(num);
     var str = num + ' ';
 
+    if (num === 1) return str + word;
+    if (!plural) return str + singular;
     if (isGenitivePlural(abs)) return str + plural;
     if (isGenitiveSingular(abs)) return str + singular;
     return str + word;
