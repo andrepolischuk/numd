@@ -5,39 +5,37 @@
  * Expose pluralize
  *
  * @param  {Number|String} num
- * @param  {String} nominative
- * @param  {String} genitiveSingular
- * @param  {String} genitivePlural
+ * @param  {String} word
+ * @param  {String} singular
+ * @param  {String} plural
  * @return {String|Function}
  * @api public
  */
 
-module.exports = function(num) {
-  var fn = typeof num === 'number' ? pluralize([].slice.call(arguments, 1)) : null;
-  return fn ? fn(num) : pluralize(arguments);
+module.exports = function(num, word, singular, plural) {
+  return typeof num === 'number' ?
+    pluralize(word, singular, plural)(num) :
+    pluralize(num, word, singular);
 };
 
 /**
  * Pluralize value
  *
- * @param  {String} words
+ * @param  {String} word
+ * @param  {String} singular
+ * @param  {String} plural
  * @return {Function}
  * @api private
  */
 
-function pluralize(words) {
+function pluralize(word, singular, plural) {
   return function(num) {
-    var res = num + ' ';
-    num = Math.abs(num);
+    var abs = Math.abs(num);
+    var str = num + ' ';
 
-    switch (true) {
-      case isGenitivePlural(num):
-        return res + words[2];
-      case isGenitiveSingular(num):
-        return res + words[1];
-      default:
-        return res + words[0];
-    }
+    if (isGenitivePlural(abs)) return str + plural;
+    if (isGenitiveSingular(abs)) return str + singular;
+    return str + word;
   };
 }
 
@@ -57,6 +55,7 @@ function isGenitivePlural(num) {
 
 /**
  * Genetive singular test
+ *
  * @param  {Number}  num
  * @return {Boolean}
  * @api private
