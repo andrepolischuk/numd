@@ -12,11 +12,11 @@
   ],
   "repository": "andrepolischuk/numd",
   "devDependencies": {
-    "mocha": "^2.1.0"
+    "ava": "^0.9.1"
   },
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "ava"
   },
   "author": "Andrey Polischuk <andre.polischuk@gmail.com>",
   "license": "MIT"
