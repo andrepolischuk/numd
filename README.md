@@ -11,10 +11,6 @@
 npm install --save numd
 ```
 
-```sh
-component install andrepolischuk/numd
-```
-
 ## Usage
 
 ```js
