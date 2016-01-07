@@ -14,7 +14,7 @@ npm install --save numd
 ## Usage
 
 ```js
-var numd = require('numd');
+import numd from 'numd';
 numd(2, 'dollar', 'dollars'); // 2 dollars
 numd(14, 'рубль', 'рубля', 'рублей'); // 14 рублей
 ```
@@ -35,8 +35,8 @@ numd(1, 'рубль', 'рубля', 'рублей'); // 1 рубль
 Return function
 
 ```js
-var usd = numd('dollar', 'dollars');
-var rur = numd('рубль', 'рубля', 'рублей');
+const usd = numd('dollar', 'dollars');
+const rur = numd('рубль', 'рубля', 'рублей');
 usd(22); // 22 dollars
 rur(51); // 51 рубль
 ```
