@@ -6,7 +6,7 @@ const isGenitiveSingular = num => Math.floor(num) !== num || num % 10 >= 2;
 
 const pluralize = (word, singular, plural) => num => {
   const abs = Math.abs(num);
-  if (num === 1) return `${num} ${word}`;
+  if (abs === 1) return `${num} ${word}`;
   if (!plural) return `${num} ${singular}`;
   if (isGenitivePlural(abs)) return `${num} ${plural}`;
   if (isGenitiveSingular(abs)) return `${num} ${singular}`;
