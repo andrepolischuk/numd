@@ -1,8 +1,7 @@
-'use strict';
-var test = require('ava');
-var numd = require('./');
+import test from 'ava';
+import numd from './index.es5';
 
-test('return string', function (t) {
+test('return string', t => {
   t.is(numd(1, 'рубль', 'рубля', 'рублей'), '1 рубль');
   t.is(numd(4, 'доллар', 'доллара', 'долларов'), '4 доллара');
   t.is(numd(7, 'франк', 'франка', 'франков'), '7 франков');
@@ -14,7 +13,7 @@ test('return string', function (t) {
   t.is(numd(-4, 'degree', 'degrees'), '-4 degrees');
 });
 
-test('return function', function (t) {
+test('return function', t => {
   t.is(numd('рубль', 'рубля', 'рублей')(1), '1 рубль');
   t.is(numd('градус', 'градуса', 'градусов')(-4), '-4 градуса');
   t.is(numd('ruble', 'rubles')(1), '1 ruble');

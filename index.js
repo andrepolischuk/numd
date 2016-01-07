@@ -1,29 +1,19 @@
-'use strict';
+const isGenitivePlural = num =>
+  num > 10 && num % 100 - num % 100 % 10 === 10 ||
+  num % 10 === 0 || num % 10 >= 5;
 
-module.exports = function (num, word, singular, plural) {
-  return typeof num === 'number' ?
-    pluralize(word, singular, plural)(num) :
-    pluralize(num, word, singular);
+const isGenitiveSingular = num => Math.floor(num) !== num || num % 10 >= 2;
+
+const pluralize = (word, singular, plural) => num => {
+  const abs = Math.abs(num);
+  if (num === 1) return `${num} ${word}`;
+  if (!plural) return `${num} ${singular}`;
+  if (isGenitivePlural(abs)) return `${num} ${plural}`;
+  if (isGenitiveSingular(abs)) return `${num} ${singular}`;
+  return `${num} ${word}`;
 };
 
-function pluralize(word, singular, plural) {
-  return function(num) {
-    var abs = Math.abs(num);
-    var str = num + ' ';
-    if (num === 1) return str + word;
-    if (!plural) return str + singular;
-    if (isGenitivePlural(abs)) return str + plural;
-    if (isGenitiveSingular(abs)) return str + singular;
-    return str + word;
-  };
-}
-
-function isGenitivePlural(num) {
-  var nn = num % 10;
-  return (num > 10 && ((num % 100) - ((num % 100) % 10)) / 10 === 1) ||
-    nn === 0 || nn >= 5;
-}
-
-function isGenitiveSingular(num) {
-  return Math.floor(num) !== num || num % 10 >= 2;
-}
+export default (num, ...words) =>
+  typeof num === 'number' ?
+    pluralize(...words)(num) :
+    pluralize(num, ...words);
