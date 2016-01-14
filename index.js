@@ -13,7 +13,8 @@ const pluralize = (word, singular, plural) => num => {
   return `${num} ${word}`;
 };
 
-export default (num, ...words) =>
-  typeof num === 'number' ?
+export default function numd(num, ...words) {
+  return typeof num === 'number' ?
     pluralize(...words)(num) :
     pluralize(num, ...words);
+};
