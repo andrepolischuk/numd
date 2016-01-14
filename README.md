@@ -21,25 +21,46 @@ numd(14, 'рубль', 'рубля', 'рублей'); // 14 рублей
 
 ## API
 
-### numd(num, word[, singular], plural)
+### numd([num, ]word[, singular], plural)
 
-Return string
+Return a string if `num` is defined:
 
 ```js
 numd(1, 'dollar', 'dollars'); // 1 dollar
 numd(1, 'рубль', 'рубля', 'рублей'); // 1 рубль
 ```
 
-### numd(word[, singular], plural)
-
-Return function
+otherwise return a function:
 
 ```js
-const usd = numd('dollar', 'dollars');
 const rur = numd('рубль', 'рубля', 'рублей');
-usd(22); // 22 dollars
+rur(4); // 4 рубля
 rur(51); // 51 рубль
 ```
+
+#### num
+
+Type: `number`
+
+Count to determine a word.
+
+#### word
+
+Type: `string`
+
+Word in the nominative singular.
+
+#### singular
+
+Type: `string`
+
+Word in the genitive singular, not used for English words and some other languages.
+
+#### plural
+
+Type: `string`
+
+Word in the plural/genitive plural.
 
 ## License
 
