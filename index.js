@@ -17,4 +17,4 @@ export default function numd(num, ...words) {
   return typeof num === 'number' ?
     pluralize(...words)(num) :
     pluralize(num, ...words);
-};
+}
