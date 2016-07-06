@@ -1,5 +1,5 @@
 import test from 'ava';
-import numd from './index.es5';
+import numd from './index';
 
 test('return string', t => {
   t.is(numd(1, 'рубль', 'рубля', 'рублей'), '1 рубль');
