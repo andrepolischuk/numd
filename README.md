@@ -23,7 +23,7 @@ numd(14, 'метр', 'метра', 'метров', {withNumber: false}); // ме
 
 ## API
 
-### numd([num, ]word[, singular], plural)
+### numd([num, ]word[, singular], plural[, options])
 
 Return a string if `num` is defined:
 
