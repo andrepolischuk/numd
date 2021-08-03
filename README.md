@@ -18,6 +18,7 @@ import numd from 'numd';
 
 numd(2, 'dollar', 'dollars'); // 2 dollars
 numd(14, 'рубль', 'рубля', 'рублей'); // 14 рублей
+numd(14, 'метр', 'метра', 'метров', {withNumber: false}); // метров
 ```
 
 ## API
@@ -37,6 +38,10 @@ otherwise return a function:
 const rur = numd('рубль', 'рубля', 'рублей');
 rur(4); // 4 рубля
 rur(51); // 51 рубль
+
+const meters = numd('метр', 'метра', 'метров', {withNumber: false});
+rur(4); // метра
+rur(55); // метров
 ```
 
 #### num
@@ -62,6 +67,25 @@ Word in the genitive singular, not used for English words and some other languag
 Type: `string`
 
 Word in the plural/genitive plural.
+
+#### options
+
+Type: `object`
+
+Options object. Care about passing the third parameter `plural` when passing the options:
+
+```js
+import numd from 'numd';
+
+numd(2, 'dollar', 'dollars', null, {withNumber: false}); // dollars
+numd(14, 'рубль', 'рубля', 'рублей', {withNumber: false}); // рублей
+```
+
+#### options.withNumber
+
+Type: `boolean`
+
+Flag indicating whether the number should be included in the result string
 
 ## License
 
